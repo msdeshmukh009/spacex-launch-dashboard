@@ -1,11 +1,11 @@
-import React from "react";
 import { Navbar } from "./components";
+import { LaunchBoard } from "./features/launch-board/components";
 
 function App() {
   return (
     <div className="bg-zinc-900 min-h-screen text-slate-50">
       <Navbar />
-      <h1 className="underline">Launch Board</h1>
+      <LaunchBoard />
     </div>
   );
 }
