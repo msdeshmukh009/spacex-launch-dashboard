@@ -18,7 +18,9 @@ const TableRow = ({ launch }) => {
         <td className="p-2">{mission_name}</td>
         <td>{flight_number}</td>
         <td>{rocket.rocket_name}</td>
-        <td>{new Date(launch_date_local).toLocaleDateString()}</td>
+        <td>{`${new Date(launch_date_local).getDate()}/${new Date(
+          launch_date_local
+        ).getMonth()}/${new Date(launch_date_local).getFullYear()}`}</td>
         <td>{launch_success ? "Success" : upcoming ? "Upcoming" : "Failed"}</td>
         <td className="hover:bg-zinc-900 hover:text-slate-50 cursor-auto">
           <Modal showModal={showModal}>
