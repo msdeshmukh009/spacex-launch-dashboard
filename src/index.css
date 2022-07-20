@@ -7,3 +7,21 @@
 * {
   font-family: "Ubuntu", sans-serif;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(64, 64, 65);
+  border-radius: 6px;
+  background-color: rgb(64, 64, 65);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(178, 178, 179);
+  border-radius: 6px;
+}

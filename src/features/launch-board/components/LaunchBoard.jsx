@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Modal } from "../../../components";
 import { getAllLaunches } from "../helpers";
+import { TableRow } from "./TableRow";
 
 const LaunchBoard = () => {
   const { isLoading, allLaunches, error } = useSelector(state => state.launchBoard);
+  const [showStatusFilter, setShowStatusFilter] = useState(false);
+  const [showDateFilter, setShowDateFilter] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,8 +24,51 @@ const LaunchBoard = () => {
             <th className="p-2 w-1/5">Mission Name</th>
             <th className="p-2 w-1/5">Flight Number</th>
             <th className="p-2 w-1/5">Rocket</th>
-            <th className="p-2 w-1/5">Launch Date(mm/dd/yyyy)</th>
-            <th className="p-2 w-1/5">Launch Status</th>
+            <th className="p-2 w-1/5 relative">
+              Launch Date(mm/dd/yyyy)
+              <button onClick={() => setShowDateFilter(prevState => !prevState)}>
+                {showDateFilter ? "Hide" : "Show"}
+              </button>
+              {showDateFilter ? (
+                <div className="absolute bg-[#3d3c3c] top-8 right-20 flex flex-col items-start p-2 rounded-md shadow-xl">
+                  <label className="flex gap-2">
+                    Start Date
+                    <input className="text-zinc-400" type="date" />
+                  </label>
+                  <label className="flex gap-2">
+                    End Date
+                    <input className="text-zinc-400" type="date" />
+                  </label>
+                </div>
+              ) : null}
+            </th>
+
+            <th className="p-2 w-1/5 relative">
+              Launch Status
+              <button onClick={() => setShowStatusFilter(prevState => !prevState)}>
+                {showStatusFilter ? "Hide" : "Show"}
+              </button>
+              {showStatusFilter ? (
+                <div className="absolute bg-[#3d3c3c] top-8 right-20 flex flex-col items-start p-2 rounded-md shadow-xl">
+                  <label className="flex gap-2">
+                    <input type="checkbox" name="past" />
+                    Past
+                  </label>
+                  <label className="flex gap-2">
+                    <input type="checkbox" name="past" />
+                    Upcoming
+                  </label>
+                  <label className="flex gap-2">
+                    <input type="checkbox" name="past" />
+                    Success
+                  </label>
+                  <label className="flex gap-2">
+                    <input type="checkbox" name="past" />
+                    Failed
+                  </label>
+                </div>
+              ) : null}
+            </th>
           </tr>
         </thead>
 
@@ -37,21 +84,7 @@ const LaunchBoard = () => {
           )}
 
           {!isLoading &&
-            allLaunches.map(launch => (
-              <tr
-                title={launch.mission_name}
-                key={launch.mission_name}
-                className=" hover:bg-slate-50 hover:text-zinc-900 transition-colors cursor-pointer"
-              >
-                <td className="p-2">{launch.mission_name}</td>
-                <td>{launch.flight_number}</td>
-                <td>{launch.rocket.rocket_name}</td>
-                <td>{new Date(launch.launch_date_local).toLocaleDateString()}</td>
-                <td>
-                  {launch.launch_success ? "Success" : launch.upcoming ? "Upcoming" : "Failed"}
-                </td>
-              </tr>
-            ))}
+            allLaunches.map(launch => <TableRow key={launch.mission_name} launch={launch} />)}
         </tbody>
       </table>
     </div>
