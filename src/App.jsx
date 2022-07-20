@@ -1,13 +1,7 @@
-import { Navbar } from "./components";
-import { LaunchBoard } from "./features/launch-board/components";
+import { NavigationRoutes } from "./routes/NavigationRoutes";
 
 function App() {
-  return (
-    <div className="bg-zinc-900 min-h-screen text-slate-50">
-      <Navbar />
-      <LaunchBoard />
-    </div>
-  );
+  return <NavigationRoutes />;
 }
 
 export default App;
