@@ -1,4 +1,8 @@
+import { useAuth0 } from "@auth0/auth0-react";
+
 const Login = () => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <main className="bg-zinc-900 text-slate-50 min-h-screen flex justify-center flex-col items-center gap-10 p-4">
       <div>
@@ -6,7 +10,12 @@ const Login = () => {
       </div>
 
       <div>
-        <button className="bg-[#054B83] p-4 rounded-md text-2xl">Login</button>
+        <button
+          onClick={() => loginWithRedirect()}
+          className="bg-[#054B83] p-4 rounded-md text-2xl"
+        >
+          Login
+        </button>
       </div>
     </main>
   );
