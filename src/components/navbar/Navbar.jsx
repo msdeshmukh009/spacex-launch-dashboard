@@ -10,7 +10,9 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-4">
         <span>{user?.name}</span>
-        <button onClick={() => logout({ returnTo: "http://localhost:3000/" })}>Logout</button>
+        <button onClick={() => logout({ returnTo: "https://launch-board.netlify.app/" })}>
+          Logout
+        </button>
       </div>
     </nav>
   );
