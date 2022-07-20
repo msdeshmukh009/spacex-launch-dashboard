@@ -1,8 +1,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
-  const { logout, user, isAuthenticated, isLoading } = useAuth0();
-  console.log(isAuthenticated);
+  const { logout, user } = useAuth0();
+
   return (
     <nav className="flex justify-between p-2">
       <div className="basis-40">
