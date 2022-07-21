@@ -21,4 +21,4 @@
 
 ## Demo
 
-![Launch board demo](https://res.cloudinary.com/dxebdqoxr/image/upload/v1658397129/launch-board_jkz9mw.gif)
+![launch-board-demo](https://res.cloudinary.com/dxebdqoxr/image/upload/v1658397129/launch-board_jkz9mw.gif)
