@@ -5,8 +5,9 @@ const Login = () => {
 
   return (
     <main className="bg-zinc-900 text-slate-50 min-h-screen flex justify-center flex-col items-center gap-10 p-4">
-      <div>
+      <div className="w-1/2">
         <img src="/assets/spacex.svg" alt="spacex logo" />
+        <h1 className="text-2xl mt-2">Launch Dashboard</h1>
       </div>
 
       <div>
