@@ -32,17 +32,18 @@ const DatesFilter = () => {
           Clear
         </button>
       </div>
-      <label className="flex justify-between gap-2 w-full">
+      <label className="flex justify-between items-center gap-2 w-full border-2 border-zinc-50 p-2 rounded-md cursor-pointer">
         <span> Start Date</span>
         <input
           className="text-zinc-400 p-2 rounded-md"
           type="date"
           name="start"
+          max={dateEndpoints.end}
           value={dateEndpoints.start}
           onChange={handleDate}
         />
       </label>
-      <label className="flex justify-between gap-2 w-full">
+      <label className="flex justify-between items-center gap-2 w-full border-2 border-zinc-50 p-2 rounded-md cursor-pointer">
         <span>End Date</span>
         <input
           className="text-zinc-400 p-2 rounded-md"
