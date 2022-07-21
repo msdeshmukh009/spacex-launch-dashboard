@@ -16,11 +16,7 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Auth0Provider
-        domain={domain}
-        clientId={clientId}
-        redirectUri="https://launch-board.netlify.app/home"
-      >
+      <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
         <BrowserRouter>
           <App />
         </BrowserRouter>

@@ -5,10 +5,10 @@ import { PrivateRoute } from "./PrivateRoute";
 const NavigationRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
 
       <Route element={<PrivateRoute />}>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Route>
     </Routes>
   );

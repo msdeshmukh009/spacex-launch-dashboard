@@ -13,7 +13,7 @@ const PrivateRoute = () => {
     );
   }
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export { PrivateRoute };
