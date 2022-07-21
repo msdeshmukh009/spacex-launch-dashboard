@@ -18,7 +18,7 @@ const Navbar = () => {
           className="text-xl"
           onClick={() => logout({ returnTo: window.location.origin })}
         >
-          Logout
+          <i className="fas fa-sign-out"></i>
         </button>
       </div>
     </nav>
