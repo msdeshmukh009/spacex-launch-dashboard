@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addStartDate, addEndDate, clearDateEndpoints } from "../launchBoardSlice";
 
-const DatesFilter = forwardRef(({}, ref) => {
+const DatesFilter = forwardRef(({ _ }, ref) => {
   const {
     filters: { dateEndpoints },
   } = useSelector(state => state.launchBoard);
