@@ -1,7 +1,8 @@
+import { forwardRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFilter, addFilter } from "../launchBoardSlice";
 
-const LaunchStatusFilter = ({ setShowStatusFilter }) => {
+const LaunchStatusFilter = forwardRef(({ setShowStatusFilter }, ref) => {
   const {
     filters: { appliedFilters },
   } = useSelector(state => state.launchBoard);
@@ -21,7 +22,10 @@ const LaunchStatusFilter = ({ setShowStatusFilter }) => {
   };
 
   return (
-    <form className="absolute bg-[#3d3c3c] top-8 right-20 flex flex-col gap-2 items-start p-2 rounded-md shadow-xl">
+    <form
+      ref={ref}
+      className="absolute bg-[#3d3c3c] top-8 right-20 flex flex-col gap-2 items-start p-2 rounded-md shadow-xl"
+    >
       <fieldset className="border-zinc-50 border-2 rounded-md p-2 flex flex-col gap-2 w-full">
         <label className="flex gap-2 cursor-pointer">
           <input
@@ -49,6 +53,6 @@ const LaunchStatusFilter = ({ setShowStatusFilter }) => {
       </fieldset>
     </form>
   );
-};
+});
 
 export { LaunchStatusFilter };

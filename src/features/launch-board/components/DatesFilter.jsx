@@ -1,7 +1,8 @@
+import { forwardRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addStartDate, addEndDate, clearDateEndpoints } from "../launchBoardSlice";
 
-const DatesFilter = () => {
+const DatesFilter = forwardRef(({}, ref) => {
   const {
     filters: { dateEndpoints },
   } = useSelector(state => state.launchBoard);
@@ -26,7 +27,10 @@ const DatesFilter = () => {
   };
 
   return (
-    <form className="absolute w-max bg-[#3d3c3c] top-8 right-8  flex flex-col gap-2 items-center justify-center p-2 rounded-md shadow-xl">
+    <form
+      ref={ref}
+      className="absolute w-max bg-[#3d3c3c] top-8 right-8  flex flex-col gap-2 items-center justify-center p-2 rounded-md shadow-xl"
+    >
       <div className="flex justify-end w-full">
         <button title="Clear Filter" onClick={clearDates}>
           Clear
@@ -56,6 +60,6 @@ const DatesFilter = () => {
       </label>
     </form>
   );
-};
+});
 
 export { DatesFilter };

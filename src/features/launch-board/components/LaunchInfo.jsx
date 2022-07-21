@@ -1,4 +1,6 @@
-const LaunchInfo = ({ launch, setShowModal }) => {
+import { forwardRef } from "react";
+
+const LaunchInfo = forwardRef(({ launch, setShowModal }, ref) => {
   const {
     mission_name,
     flight_number,
@@ -11,7 +13,10 @@ const LaunchInfo = ({ launch, setShowModal }) => {
   } = launch;
 
   return (
-    <div className="bg-zinc-900 p-2 min-w-[500px] max-w-[750px] flex flex-col gap-8 overflow-y-scroll max-h-[500px] rounded-md">
+    <div
+      ref={ref}
+      className="bg-zinc-900 p-2 min-w-[500px] max-w-[750px] flex flex-col gap-8 overflow-y-scroll max-h-[500px] rounded-md"
+    >
       <div className="flex justify-end">
         <button
           title="Close"
@@ -117,6 +122,6 @@ const LaunchInfo = ({ launch, setShowModal }) => {
       </div>
     </div>
   );
-};
+});
 
 export { LaunchInfo };

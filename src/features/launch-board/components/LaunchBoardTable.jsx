@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllLaunches } from "../helpers";
 import { filterLaunchList } from "../../../utils";
 import { TableRow } from "./TableRow";
 import { DatesFilter } from "./DatesFilter";
 import { LaunchStatusFilter } from "./LaunchStatusFilter";
+import { useDetectClickOutside } from "../../../hooks/useDetectClickOutside";
 
 const LaunchBoardTable = () => {
   const {
@@ -16,6 +17,12 @@ const LaunchBoardTable = () => {
   const [showStatusFilter, setShowStatusFilter] = useState(false);
   const [showDateFilter, setShowDateFilter] = useState(false);
   const dispatch = useDispatch();
+
+  const statusFilterRef = useRef(null);
+  const datesFilterRef = useRef(null);
+
+  useDetectClickOutside(statusFilterRef, setShowStatusFilter);
+  useDetectClickOutside(datesFilterRef, setShowDateFilter);
 
   useEffect(() => {
     dispatch(getAllLaunches());
@@ -42,7 +49,7 @@ const LaunchBoardTable = () => {
               <i className="fas fa-triangle"></i>
             </button>
 
-            {showDateFilter ? <DatesFilter /> : null}
+            {showDateFilter ? <DatesFilter ref={datesFilterRef} /> : null}
           </th>
 
           <th className="p-2 w-1/5 relative">
@@ -57,7 +64,7 @@ const LaunchBoardTable = () => {
             </button>
 
             {showStatusFilter ? (
-              <LaunchStatusFilter setShowStatusFilter={setShowStatusFilter} />
+              <LaunchStatusFilter setShowStatusFilter={setShowStatusFilter} ref={statusFilterRef} />
             ) : null}
           </th>
         </tr>
