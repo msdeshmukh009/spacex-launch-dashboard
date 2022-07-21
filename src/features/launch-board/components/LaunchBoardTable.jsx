@@ -56,7 +56,9 @@ const LaunchBoardTable = () => {
               <i className="fas fa-triangle"></i>
             </button>
 
-            {showStatusFilter ? <LaunchStatusFilter /> : null}
+            {showStatusFilter ? (
+              <LaunchStatusFilter setShowStatusFilter={setShowStatusFilter} />
+            ) : null}
           </th>
         </tr>
       </thead>

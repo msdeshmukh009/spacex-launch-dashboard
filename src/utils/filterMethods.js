@@ -10,14 +10,9 @@ const filterLaunchList = ({ appliedFilters, dateEndpoints }, data) => {
     if (appliedFilters.includes("upcoming")) {
       tempData = tempData.filter(launch => launch.upcoming);
     }
-  }
 
-  if (!(appliedFilters.includes("success") && appliedFilters.includes("failed"))) {
-    if (appliedFilters.includes("success")) {
-      tempData = tempData.filter(launch => launch.launch_success);
-    }
-    if (appliedFilters.includes("failed")) {
-      tempData = tempData.filter(launch => !launch.launch_success);
+    if (appliedFilters.length === 0) {
+      tempData = [];
     }
   }
 

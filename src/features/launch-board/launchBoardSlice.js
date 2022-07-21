@@ -6,7 +6,7 @@ const initialState = {
   error: "",
   allLaunches: [],
   filters: {
-    appliedFilters: ["past", "upcoming", "success", "failed"],
+    appliedFilters: ["past", "upcoming"],
     dateEndpoints: { start: "", end: "" },
   },
 };
@@ -22,7 +22,6 @@ const launchBoardSlice = createSlice({
       state.filters.appliedFilters.push(payload);
     },
     addStartDate: (state, { payload }) => {
-      console.log(payload, "payload");
       state.filters.dateEndpoints.start = payload;
     },
     addEndDate: (state, { payload }) => {
